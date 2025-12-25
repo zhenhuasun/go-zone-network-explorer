@@ -1,0 +1,6 @@
+*.pptx
+*.ppt
+*.txt
+/notebooks/generalized_cost.ipynb
+*.pkl
+*.csv

@@ -1,0 +1,5 @@
+{
+    "data_GTFS_folder": "data/GO_GTFS/",
+    "data_GIS_folder": "data/GIS/",
+    "outputs_folder": "outputs/"
+}
