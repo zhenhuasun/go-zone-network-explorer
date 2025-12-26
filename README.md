@@ -143,5 +143,5 @@ project-root/
 
 
 ## License
-This project is licensed under the MIT license. See [LICENSE](https://github.com/zhenhuasun/go-zone-network-explorer/?tab=MIT-1-ov-file/) for more information.
+This project is licensed under the MIT license. See [LICENSE](https://github.com/zhenhuasun/go-zone-network-explorer/blob/main/LICENSE/) for more information.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
