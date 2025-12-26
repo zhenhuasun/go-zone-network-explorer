@@ -1,4 +1,4 @@
-# GO Transit Fare Zones & Network Distance Analysis
+# GO Transit Fare Zones & Fare By Network Distance Analysis
 <a id="readme-top"></a>
 An independent, exploratory project using **GO Transit GTFS data** and open-source tools to visualize fare zones and analyze the relationship between **zone-based fares** and **network travel distances**.  
 *All views are my own and do not represent official GO Transit fare zones, designs, or policies.*
@@ -14,6 +14,7 @@ An independent, exploratory project using **GO Transit GTFS data** and open-sour
 - [Outputs](#outputs)
 - [Getting Started](#getting-started)
 - [Project Structure](#project-structure)
+- [License](#license)
 
 ---
 
@@ -28,7 +29,7 @@ GO Transit uses **zone-based pricing**, but there is limited public visualizatio
 ---
 
 ## Project Goals
-- Create an **interactive map** of GO Transit fare zones using public GTFS data.
+- Create **interactive maps** of GO Transit fare zones using public GTFS data.
 - Build a **network graph** of GO Transit routes and transfers.
 - Calculate **average shortest-path network distances** between zones.
 - Compare these distances to **existing fare structures** for insights into pricing fairness and efficiency.
@@ -62,11 +63,12 @@ GO Transit uses **zone-based pricing**, but there is limited public visualizatio
    - Notebook: `go_transit_network_shortest_distance.ipynb`  
    - Process:
      - Build a multimodal graph from GTFS routes and transfers.
-     - Compute shortest-path distances between all stop pairs.
-     - Aggregate to **average network distance per zone pair** (precise term: *Average Inter-Zonal Network Distance*).
+     - Compute shortest network path distances between all stop pairs.
+     - Aggregate to **average inter-zonal network distance**.
+     - Analyze zonal fare pattern sorted by average inter-zonal network distance.
    - Outputs:
-     - `03_go_transit_shortest_BM_to_LI.html` (Bloomington → Old Elm test)
-     - `04_go_transit_networkx.html` (graph visualization)
+     - `03_go_transit_shortest_BM_to_LI.html` (shortest network path example: Bloomington → Old Elm test)
+     - `04_go_transit_networkx.html` (graph visualization of network connectivity)
      - `05_go_transit_zone_to_zone_fare_network_distance_explorer.html` (final interactive explorer)
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -76,7 +78,7 @@ GO Transit uses **zone-based pricing**, but there is limited public visualizatio
 - **Voronoi Zone Map**: Visualizes fare zones derived from GTFS stops.
 - **Network Graph**: Represents GO Transit routes and transfer points.
 - **Distance Computation**: Calculates realistic travel distances using network paths.
-- **Interactive Explorer**: Compares fares vs. network distances for any source zone.
+- **Interactive Explorer**: Compares fares vs. network distances for any origin zone.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ---
@@ -104,7 +106,7 @@ GO Transit uses **zone-based pricing**, but there is limited public visualizatio
 1. Clone the repository.
 2. Open any HTML output in your browser to explore results.
 3. To reproduce:
-   - Download GTFS feed and place in `data/GO_GTFS_{feed version in yyyymmdd}/`.
+   - Download **zipped** GTFS feed and place in `data/GO_GTFS/`.
    - Run notebooks in order:
      - `go_transit_zone_map.ipynb`
      - `go_transit_network_shortest_distance.ipynb`
@@ -116,17 +118,17 @@ GO Transit uses **zone-based pricing**, but there is limited public visualizatio
 ```text
 project-root/
 ├─ data/
-│  ├─ GO_GTFS_20251210/          # Raw GTFS archives
-│  └─ GIS/                       # Raw/Derived GeoJSON
+│  ├─ GO_GTFS/                # Raw GTFS archives
+│  └─ GIS/                    # Raw/Derived GeoJSON
 ├─ src/
-│  ├─ build_voronoi_zones.py     # Voronoi zones + dissolve
-│  ├─ gtfs_cleaning.py           # Prepare GTFS data
+│  ├─ build_voronoi_zones.py  # Voronoi zones + dissolve
+│  ├─ gtfs_cleaning.py        # Prepare GTFS data
 ├─ outputs/
-│  ├─ 01_*.html                  # 01_go_transit_voronoi_fare_zones
-│  └─ 02_*.html                  # 02_go_transit_voronoi_fare_zones_treelayer
-│  └─ 03_*.html                  # 03_go_transit_shortest_BM_to_LI
-│  └─ 04_*.html                  # 04_go_transit_networkx
-│  └─ 05_*.html                  # 05_go_transit_zone_to_zone_fare_network_distance_explorer
+│  ├─ 01_*.html               # 01_go_transit_voronoi_fare_zones
+│  └─ 02_*.html               # 02_go_transit_voronoi_fare_zones_treelayer
+│  └─ 03_*.html               # 03_go_transit_shortest_BM_to_LI
+│  └─ 04_*.html               # 04_go_transit_networkx
+│  └─ 05_*.html               # 05_go_transit_zone_to_zone_fare_network_distance_explorer
 ├─ config.json
 ├─ .gitignore
 ├─ requirements.txt
@@ -134,4 +136,12 @@ project-root/
 ├─ README.md
 └─ LICENSE
 ```
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+---
+
+
+## License
+This project is licensed under the MIT license. See [LICENSE](https://github.com/zhenhuasun/go-zone-network-explorer/?tab=MIT-1-ov-file/) for more information.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
